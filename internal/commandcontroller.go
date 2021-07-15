@@ -14,6 +14,8 @@ type schedule struct {
 
 var nameRgx = regexp.MustCompile("^[a-zA-Z0-9]{1,4}$")
 
+// Validate the schedule has a valid name and all times are property formatted.
+// If valid, also return all times formatted using layout `03:04 PM`
 func (s schedule) validateAndFormat() (bool, []string) {
 	if !nameRgx.MatchString(s.Name) {
 		return false, nil

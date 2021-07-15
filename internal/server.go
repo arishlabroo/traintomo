@@ -4,14 +4,16 @@ import (
 	"net/http"
 )
 
-type server struct {
+// Server represents the http server.
+type Server struct {
 	cc     commandController
 	qc     queryController
 	router http.ServeMux
 }
 
-func NewServer(db DB) *server {
-	s := &server{
+// NewServer returns a http server where the application routes have already been configured.
+func NewServer(db DB) *Server {
+	s := &Server{
 		cc:     newCommandController(db),
 		qc:     newQueryController(db),
 		router: http.ServeMux{},
@@ -22,6 +24,6 @@ func NewServer(db DB) *server {
 }
 
 // ServeHTTP ... This is used to satisfy http.Handler interface.
-func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	s.router.ServeHTTP(w, r)
 }
