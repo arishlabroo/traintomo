@@ -7,7 +7,6 @@ import (
 const timeFormat string = "03:04 PM"
 
 //go:generate mockgen -destination=./mocks/db.go -source=./db.go
-
 type DB interface {
 	Set(key string, value interface{})
 	Fetch(key string) interface{}

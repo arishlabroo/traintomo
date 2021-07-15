@@ -244,6 +244,16 @@ func TestServer_GetConflict(t *testing.T) {
 			conflict:    "",
 		},
 		{
+			testName: "no_conflict",
+			schedules: []schedule{
+				{Name: "ABC", Schedule: []string{"07:05 PM"}},
+				{Name: "XYZ", Schedule: []string{"12:05 PM"}},
+			},
+			requestTime: "07:04 PM",
+			status:      http.StatusOK,
+			conflict:    "",
+		},
+		{
 			testName: "has_conflict",
 			schedules: []schedule{
 				{Name: "ABC", Schedule: []string{"12:05 PM"}},
