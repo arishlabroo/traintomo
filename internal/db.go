@@ -1,8 +1,10 @@
-package main
+package internal
 
 import (
 	"sync"
 )
+
+const timeFormat string = "03:04 PM"
 
 //go:generate mockgen -destination=./mocks/db.go -source=./db.go
 
